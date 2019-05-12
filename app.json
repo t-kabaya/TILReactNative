@@ -24,7 +24,8 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.kaba.inc"
+      "package": "com.kaba.inc",
+      "permissions": []
     }
   }
 }
