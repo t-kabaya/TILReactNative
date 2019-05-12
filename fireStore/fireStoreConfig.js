@@ -22,13 +22,15 @@ db.collection("characters").add({
   date: new Date()
 })
 
-var citiesRef = db.collection('characters');
-var allCities = citiesRef.get()
-    .then(snapshot => {
-      snapshot.forEach(doc => {
-        console.warn(doc.id, '=>', doc.data());
-      });
-    })
-    .catch(err => {
-      console.log('Error getting documents', err);
-    });
+// var citiesRef = db.collection('characters');
+// var allCities = citiesRef.get()
+//     .then(snapshot => {
+//       snapshot.forEach(doc => {
+//         console.warn(doc.id, '=>', doc.data());
+//       });
+//     })
+//     .catch(err => {
+//       console.log('Error getting documents', err);
+//     });
+import {getAllUserTil} from './ORM.ts'
+getAllUserTil()
