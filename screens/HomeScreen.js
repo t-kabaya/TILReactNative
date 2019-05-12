@@ -38,7 +38,7 @@ export default class HomeScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.heading}>
-          <Text style={styles.headingTest}>TIL</Text>
+          <Text style={styles.headingTest}>Today I Learned</Text>
         </View>
 
         <TilListItem til={til} />

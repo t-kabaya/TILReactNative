@@ -22,3 +22,12 @@ export const getAllUserTil = async() => {
   console.log('TIL2',TIL)
   return TIL
 }
+
+export const getMyTil = async() => {
+  // var TILRef = db.collection('TIL');
+  var TILRef = db.collection('TIL')
+  var response = await TILRef.orderBy('date', 'desc').get()
+  const TIL = response.docs.map(item => item.data())
+  const myTil = TIL.filter(til => til.userId === Constants.installationId)
+  return myTil
+}
