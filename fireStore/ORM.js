@@ -16,7 +16,7 @@ export const postTil = (til: string): void => {
 export const getAllUserTil = async() => {
   // var TILRef = db.collection('TIL');
   var TILRef = db.collection('TIL')
-  var response = await TILRef.get()
+  var response = await TILRef.orderBy('date', 'desc').get()
   const TIL = response.docs.map(item => item.data())
 
   console.log('TIL2',TIL)

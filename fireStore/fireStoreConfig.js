@@ -15,12 +15,12 @@ firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
 
-import { Constants } from 'expo'
-db.collection("TIL").add({
-  userId: Constants.installationId,
-  tilContentText: "FIREBASEは素晴らしい",
-  date: new Date()
-})
+// import { Constants } from 'expo'
+// db.collection("TIL").add({
+//   userId: Constants.installationId,
+//   tilContentText: "FIREBASEは素晴らしい",
+//   date: new Date()
+// })
 
 // var citiesRef = db.collection('TIL');
 // var allCities = citiesRef.get()

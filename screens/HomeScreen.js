@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 import {getAllUserTil} from '../fireStore/ORM'
 import TilListItem from '../components/TilListItem'
+import {NavigationEvents} from 'react-navigation';
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -23,6 +24,10 @@ export default class HomeScreen extends Component {
   }
 
   componentDidMount = async() => {
+    this.loadFeed()
+  }
+
+  loadFeed = async() => {
     const til = await getAllUserTil()
     this.setState({til, isLoading: false})
   }
@@ -41,6 +46,7 @@ export default class HomeScreen extends Component {
         <TouchableOpacity onPress={() => this.props.navigation.navigate('PostTilScreen')} style={styles.fab}>
           <Text style={styles.fabIcon}>+</Text>
         </TouchableOpacity>
+        <NavigationEvents onDidFocus={() => this.loadFeed()} />
 
       </View>
     )
