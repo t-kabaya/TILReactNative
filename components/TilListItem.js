@@ -10,42 +10,20 @@ import {
   FlatList,
   ActivityIndicator
 } from 'react-native'
-import {getAllUserTil} from '../fireStore/ORM'
-import TilListItem from '../components/TilListItem'
 
-export default class HomeScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      til: null,
-      isLoading: true
-    }
-  }
+const TilListItem = (props) => (
 
-  componentDidMount = async() => {
-    const til = await getAllUserTil()
-    this.setState({til, isLoading: false})
-  }
 
-  render() {
-    if (this.state.isLoading) return <ActivityIndicator />
-    const { til } = this.state;
-    return (
-      <View style={styles.container}>
-        <View style={styles.heading}>
-          <Text style={styles.headingTest}>TIL</Text>
-        </View>
+        <FlatList
+          data={props.til}
+          renderItem={({ item }) => <View style={styles.list}>
+            <Text>{item.tilContentText}</Text>
+          </View>}
+        />
 
-        <TilListItem til={til} />
-
-        <TouchableOpacity onPress={() => alert('FAB clicked')} style={styles.fab}>
-          <Text style={styles.fabIcon}>+</Text>
-        </TouchableOpacity>
-
-      </View>
     )
-  }
-}
+
+    export default TilListItem
 
 const styles = StyleSheet.create({
   container: {
