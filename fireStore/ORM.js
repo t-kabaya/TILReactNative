@@ -5,9 +5,11 @@ export const postTil = (til: string): void => {
   if (til) {
     db.collection("TIL").add({
       userId: Constants.installationId,
-      tilContentText: "FIREBASEは素晴らしい",
+      tilContentText: til,
       date: new Date()
     })
+    // 本当は、.thenの後に続けて入れないといけないが、めんどいのでこれでいいや
+    console.log('success to post TIL')
   }
 }
 

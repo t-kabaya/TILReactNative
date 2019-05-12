@@ -38,7 +38,7 @@ export default class HomeScreen extends Component {
 
         <TilListItem til={til} />
 
-        <TouchableOpacity onPress={() => alert('FAB clicked')} style={styles.fab}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('PostTilScreen')} style={styles.fab}>
           <Text style={styles.fabIcon}>+</Text>
         </TouchableOpacity>
 
