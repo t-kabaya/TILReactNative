@@ -36,12 +36,14 @@ const styles = StyleSheet.create({
     minHeight: 60,
     justifyContent: 'space-around',
     paddingHorizontal: 25,
-    paddingVertical: 5,
+    paddingVertical: 7,
     elevation: 1,
   },
   contentText: {
     fontSize: 20,
-    lineHeight: 25,
-    letterSpacing: 1
+    lineHeight: 27,
+    letterSpacing: 3,
+    fontWeight: 'bold',
+    fontFamily: 'mplus'
   }
 })
