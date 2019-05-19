@@ -10,27 +10,8 @@ const firebaseConfig = {
   messagingSenderId: "694657731060",
   appId: "1:694657731060:web:a3ec2892421ddff6"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
-
-// import { Constants } from 'expo'
-// db.collection("TIL").add({
-//   userId: Constants.installationId,
-//   tilContentText: "FIREBASEは素晴らしい",
-//   date: new Date()
-// })
-
-// var citiesRef = db.collection('TIL');
-// var allCities = citiesRef.get()
-//     .then(snapshot => {
-//       snapshot.forEach(doc => {
-//         console.warn(doc.id, '=>', doc.data());
-//       });
-//     })
-//     .catch(err => {
-//       console.log('Error getting documents', err);
-//     });
-// import {getAllUserTil} from './ORM'
-// getAllUserTil()
