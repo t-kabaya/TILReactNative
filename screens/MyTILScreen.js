@@ -8,13 +8,19 @@ import {
   TouchableOpacity,
   View,
   FlatList,
-  ActivityIndicator
+  ActivityIndicator,
+  SafeAreaView
 } from 'react-native'
+import {NavigationEvents} from 'react-navigation'
 import {getMyTil} from '../fireStore/ORM'
 import TilListItem from '../components/TilListItem'
-import {NavigationEvents} from 'react-navigation';
+import Layout from '../constants/Layout'
+import Colors from '../constants/Colors'
 
 export default class MyTilScreen extends Component {
+  static navigationOptions = {
+    header: null
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -36,6 +42,7 @@ export default class MyTilScreen extends Component {
     if (this.state.isLoading) return <ActivityIndicator />
     const { til } = this.state;
     return (
+      <SafeAreaView style={styles.safeAreaView}>
       <View style={styles.container}>
         <View style={styles.heading}>
           <Text style={styles.headingTest}>私の歴史</Text>
@@ -49,6 +56,7 @@ export default class MyTilScreen extends Component {
         <NavigationEvents onDidFocus={() => this.loadFeed()} />
 
       </View>
+      </SafeAreaView>
     )
   }
 }
@@ -56,6 +64,10 @@ export default class MyTilScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  safeAreaView: {
+    flex: 1,
+    backgroundColor: Colors.tintColor
   },
   heading: {
     height: 60,

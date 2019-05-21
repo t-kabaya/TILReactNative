@@ -37,6 +37,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     paddingHorizontal: 25,
     paddingVertical: 7,
+    marginHorizontal: 20,
+    marginVertical: 5,
     elevation: 1,
   },
   contentText: {

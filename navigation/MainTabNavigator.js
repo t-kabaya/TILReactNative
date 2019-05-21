@@ -13,13 +13,12 @@ const HomeStack = createStackNavigator({
 });
 
 HomeStack.navigationOptions = {
+  header: null,
   tabBarLabel: 'ホーム',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={'md-home'
-        
-      }
+      name={'md-home'}
     />
   ),
 };
@@ -38,7 +37,11 @@ MyTILStack.navigationOptions = {
   ),
 };
 
-export default createBottomTabNavigator({
-  HomeStack,
-  MyTILStack,
-});
+export default createBottomTabNavigator(
+  {
+    HomeStack,
+    MyTILStack,
+  },{
+    headerMode: 'none'
+  }
+);
