@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   View,
   FlatList,
-  ActivityIndicator,
   StatusBar,
   SafeAreaView
 } from 'react-native'
@@ -17,6 +16,7 @@ import TilListItem from '../components/TilListItem'
 import {NavigationEvents} from 'react-navigation';
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
+import ActivityIndicator from '../components/ActivityIndicator'
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
@@ -42,15 +42,14 @@ export default class HomeScreen extends Component {
 
   render() {
     if (this.state.isLoading) return <ActivityIndicator />
-    const { til } = this.state;
+    const { til } = this.state
     return (
       <SafeAreaView style={styles.safeAreaView}>
       <View style={styles.container}>
         <StatusBar
-      backgroundColor="red"
-      barStyle="light-content"
-      // hidden
-    />
+          backgroundColor="red"
+          barStyle="light-content"
+        />
         <View style={styles.heading}>
           <Text style={styles.headingTest}>Today I Learned</Text>
         </View>
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     height: 60,
-    backgroundColor: '#03A9F4',
+    backgroundColor: Colors.backgroundBaseColor,
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   View,
   FlatList,
-  ActivityIndicator,
   SafeAreaView
 } from 'react-native'
 import {NavigationEvents} from 'react-navigation'
@@ -16,6 +15,7 @@ import {getMyTil} from '../fireStore/ORM'
 import TilListItem from '../components/TilListItem'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
+import ActivityIndicator from '../components/ActivityIndicator'
 
 export default class MyTilScreen extends Component {
   static navigationOptions = {
