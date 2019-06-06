@@ -1,38 +1,16 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { DangerZone } from 'expo';
-import loadingLottieJson from '../assets/lottie/loadingLottieJson'
+import React, { Component } from 'react'
+import { StyleSheet, View } from 'react-native'
 import Colors from '../constants/Colors'
-const { Lottie } = DangerZone;
+import { BarIndicator } from 'react-native-indicators'
 
-export default class LoadingComponent extends React.Component {
-
-  componentDidMount = () => {
-    this._playAnimation()
-  }
-
-  _playAnimation = () => {
-    if (this.animation) {
-      this.animation.reset()
-      this.animation.play()
-    }
-  }
-
-  render() {
+export default class LoadingComponent extends Component {
+  render () {
     return (
       <View style={styles.container}>
-        <View>
-          <Lottie
-            style={styles.animation}
-            ref={(animation) => this.animation = animation}
-            loop
-            source={loadingLottieJson}
-            />
-        </View>
+        <BarIndicator count={5} color='white' size={50} />
       </View>
-    );
+    )
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -44,7 +22,7 @@ const styles = StyleSheet.create({
   },
   animation: {
     width: 100,
-    height: 100,
-    backgroundColor: 'transparent',
+    height: 100
+    // backgroundColor: 'transparent'
   }
 })
