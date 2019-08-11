@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 import {
   Image,
   Platform,
@@ -11,21 +11,23 @@ import {
   ActivityIndicator
 } from 'react-native'
 
-const TilListItem = (props) => (
+const TilListItem = props => {
+  const dateSec = props.til[0].date
+  const parsedDate = new Date(dateSec * 1000)
+  debugger
+  return (
     <FlatList
       data={props.til}
-      renderItem={({ item }) => 
+      renderItem={({ item }) => (
         <View style={styles.list}>
-          <Text
-            style={styles.contentText}
-            numberOfLines={5}
-          >
+          <Text style={styles.contentText} numberOfLines={5}>
             {item.tilContentText}
           </Text>
         </View>
-      }
+      )}
     />
-)
+  )
+}
 
 export default TilListItem
 
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     marginHorizontal: 20,
     marginVertical: 5,
-    elevation: 1,
+    elevation: 1
   },
   contentText: {
     fontSize: 20,
