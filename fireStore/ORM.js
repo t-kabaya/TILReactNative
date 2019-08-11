@@ -34,7 +34,10 @@ export const getMyTil = async () => {
   var response = await TILRef.orderBy('date', 'desc').get()
   const TIL = response.docs.map(item => item.data())
   const myTil = TIL.filter(til => til.userId === Constants.installationId)
-  return myTil
+
+  const TILWithPostTime = addFormattedPostTime(myTil)
+
+  return TILWithPostTime
 }
 
 // フィルター関数群

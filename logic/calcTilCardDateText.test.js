@@ -1,7 +1,7 @@
 import { addFormattedPostTime } from './calcTilCardDateText'
 
 test('must return dateText', () => {
-  var date = new Date('2015-08-25T15:35:58.000Z')
+  var date = convertDateToUTC(new Date('2015-08-25T15:35:58.000Z'))
   var seconds = date.getTime() / 1000
 
   const input = [
@@ -32,3 +32,16 @@ test('must return dateText', () => {
 
   expect(addFormattedPostTime(input)).toEqual(output)
 })
+
+// UTCの時間に変換しないと、テストが落ちるので
+// https://stackoverflow.com/questions/39223481/incorrect-date-shown-in-new-date-in-javascript
+const convertDateToUTC = date => {
+  return new Date(
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate(),
+    date.getUTCHours(),
+    date.getUTCMinutes(),
+    date.getUTCSeconds()
+  )
+}
