@@ -1,5 +1,6 @@
 import { Constants } from 'expo'
 import { db } from './fireStoreConfig'
+import { addFormattedPostTime } from '../logic/calcTilCardDateText'
 
 export const postTil = (til: string): void => {
   if (til) {
@@ -21,9 +22,9 @@ export const getAllUserTil = async () => {
   const TIL = response.docs.map(item => item.data())
 
   console.log('TIL2', TIL)
-  const TILWithDateText = addDateText(TIL)
+  const TILWithPostTime = addFormattedPostTime(TIL)
 
-  return TILWithDateText
+  return TILWithPostTime
 }
 
 // ここに、ateを与える処理を追加していく。
@@ -37,10 +38,3 @@ export const getMyTil = async () => {
 }
 
 // フィルター関数群
-
-// TILを受け取り、dateTextを与えて返す処理。
-const addDateText = TILs => {
-  return TILs.map(til => {
-    tilContentText: til.tilContentText
-  })
-}

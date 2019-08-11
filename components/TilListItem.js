@@ -12,19 +12,19 @@ import {
 } from 'react-native'
 
 const TilListItem = props => {
-  const dateSec = props.til[0].date
-  const parsedDate = new Date(dateSec * 1000)
-  debugger
   return (
     <FlatList
       data={props.til}
-      renderItem={({ item }) => (
-        <View style={styles.list}>
-          <Text style={styles.contentText} numberOfLines={5}>
-            {item.tilContentText}
-          </Text>
-        </View>
-      )}
+      renderItem={({ item }) => {
+        return (
+          <View style={styles.list}>
+            <Text style={styles.contentText} numberOfLines={5}>
+              {item.tilContentText}
+            </Text>
+            <Text>{item.postTimeText}</Text>
+          </View>
+        )
+      }}
     />
   )
 }

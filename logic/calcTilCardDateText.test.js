@@ -1,4 +1,4 @@
-import { addDateText } from './calcTilCardDateText'
+import { addFormattedPostTime } from './calcTilCardDateText'
 
 test('must return dateText', () => {
   var date = new Date('2015-08-25T15:35:58.000Z')
@@ -22,13 +22,13 @@ test('must return dateText', () => {
   const output = [
     {
       tilContentText: 'text',
-      dateText: '2015年8月25日 15:35'
+      postTimeText: '2015年8月25日 15:35'
     },
     {
       tilContentText: 'text',
-      dateText: '2015年8月25日 15:35'
+      postTimeText: '2015年8月25日 15:35'
     }
   ]
 
-  expect(addDateText(input)).toEqual(output)
+  expect(addFormattedPostTime(input)).toEqual(output)
 })
