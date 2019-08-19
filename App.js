@@ -24,6 +24,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#03A9F4'
+    backgroundColor: '#03A9F4',
+    paddingTop: StatusBar.currentHeight
   }
 })
