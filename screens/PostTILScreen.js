@@ -93,8 +93,8 @@ const S = StyleSheet.create({
   },
   materialButton: {
     marginVertical: hp('2%'),
-    marginHorizontal: wp('3%'),
-    width: wp('10%')
+    marginHorizontal: wp('4%'),
+    width: wp('13%')
   },
   materialButtonText: {
     fontSize: wp('5.2%'),
