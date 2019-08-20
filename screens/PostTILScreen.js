@@ -5,7 +5,8 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
-  Text
+  Text,
+  KeyboardAvoidingView
 } from 'react-native'
 import { postTil } from '../fireStore/ORM'
 import { Button } from 'react-native-elements'
@@ -14,21 +15,17 @@ import {
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
 
-class UselessTextInput extends Component {
-  render () {
-    return (
-      <TextInput
-        {...this.props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
-        editable
-        maxLength={40}
-        autoFocus
-        placeholder='今日学んだことは何ですか?'
-        multiline
-        style={S.textInput}
-      />
-    )
-  }
-}
+const UselessTextInput = () => (
+  <TextInput
+    {...this.props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
+    editable
+    maxLength={40}
+    autoFocus
+    placeholder='今日学んだことは何ですか?'
+    multiline
+    style={S.textInput}
+  />
+)
 
 export default class UselessTextInputMultiline extends Component {
   constructor (props) {
@@ -48,12 +45,7 @@ export default class UselessTextInputMultiline extends Component {
   // color.
   render () {
     return (
-      <View
-        style={{
-          borderBottomColor: '#000000',
-          borderBottomWidth: 1
-        }}
-      >
+      <KeyboardAvoidingView>
         <View style={S.headerContainer}>
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <View style={S.materialButton}>
@@ -74,7 +66,7 @@ export default class UselessTextInputMultiline extends Component {
           onChangeText={text => this.setState({ text })}
           value={this.state.text}
         />
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
