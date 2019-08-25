@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 import {
   Image,
   Platform,
@@ -11,57 +11,66 @@ import {
   StatusBar,
   SafeAreaView
 } from 'react-native'
-import {getAllUserTil} from '../fireStore/ORM'
+import { getAllUserTil } from '../fireStore/ORM'
 import TilListItem from '../components/TilListItem'
-import {NavigationEvents} from 'react-navigation';
+import { NavigationEvents } from 'react-navigation'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
 import ActivityIndicator from '../components/ActivityIndicator'
+import {
+  loadInitialStateFromAsyncStorage,
+  saveInitialStateInAsyncStorage
+} from '../asyncStorage/homeScreenAsyncStorage'
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
     header: null
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      til: null,
-      isLoading: true
-    }
+  state = {
+    til: loadInitialStateFromAsyncStorage(),
+    isLoading: true
   }
 
-  componentDidMount = async() => {
+  componentDidMount = async () => {
+    this.loadFeedFromAsyncStorage()
     this.loadFeed()
   }
 
-  loadFeed = async() => {
-    const til = await getAllUserTil()
-    this.setState({til, isLoading: false})
+  loadFeedFromAsyncStorage = async () => {
+    const til = await loadInitialStateFromAsyncStorage()
+    if (til) {
+      this.setState({ til, isLoading: false })
+    }
   }
 
-  render() {
+  loadFeed = async () => {
+    const til = await getAllUserTil()
+    saveInitialStateInAsyncStorage(til)
+    this.setState({ til, isLoading: false })
+  }
+
+  render () {
     if (this.state.isLoading) return <ActivityIndicator />
     const { til } = this.state
     return (
       <SafeAreaView style={styles.safeAreaView}>
-      <View style={styles.container}>
-        <StatusBar
-          backgroundColor="red"
-          barStyle="light-content"
-        />
-        <View style={styles.heading}>
-          <Text style={styles.headingTest}>Today I Learned</Text>
+        <View style={styles.container}>
+          <StatusBar backgroundColor='red' barStyle='light-content' />
+          <View style={styles.heading}>
+            <Text style={styles.headingTest}>Today I Learned</Text>
+          </View>
+
+          <TilListItem til={til} />
+
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('PostTilScreen')}
+            style={styles.fab}
+          >
+            <Text style={styles.fabIcon}>+</Text>
+          </TouchableOpacity>
+          <NavigationEvents onDidFocus={() => this.loadFeed()} />
         </View>
-
-        <TilListItem til={til} />
-
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('PostTilScreen')} style={styles.fab}>
-          <Text style={styles.fabIcon}>+</Text>
-        </TouchableOpacity>
-        <NavigationEvents onDidFocus={() => this.loadFeed()} />
-
-      </View>
       </SafeAreaView>
     )
   }
@@ -81,7 +90,7 @@ const styles = StyleSheet.create({
     height: 60,
     backgroundColor: Colors.backgroundBaseColor,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   headingTest: {
     fontSize: 20,
@@ -92,7 +101,7 @@ const styles = StyleSheet.create({
   list: {
     margin: 5,
     backgroundColor: 'white',
-    height:80,
+    height: 80,
     justifyContent: 'space-around',
     paddingLeft: 10,
     elevation: 1
@@ -114,4 +123,4 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: 'white'
   }
-});
+})
