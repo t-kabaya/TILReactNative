@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react'
 import {
   Image,
   Platform,
@@ -10,52 +10,67 @@ import {
   FlatList,
   SafeAreaView
 } from 'react-native'
-import {NavigationEvents} from 'react-navigation'
-import {getMyTil} from '../fireStore/ORM'
+import { NavigationEvents } from 'react-navigation'
+import { getMyTil } from '../fireStore/ORM'
 import TilListItem from '../components/TilListItem'
 import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
 import ActivityIndicator from '../components/ActivityIndicator'
+import {
+  loadInitialStateFromAsyncStorage,
+  saveInitialStateInAsyncStorage
+} from '../asyncStorage/myTilScreenAsyncStorage'
 
 export default class MyTilScreen extends Component {
   static navigationOptions = {
     header: null
   }
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       til: null,
       isLoading: true
     }
   }
 
-  componentDidMount = async() => {
+  componentDidMount = async () => {
+    this.loadPersistedFeed()
     this.loadFeed()
   }
 
-  loadFeed = async() => {
-    const til = await getMyTil()
-    this.setState({til, isLoading: false})
+  loadPersistedFeed = async () => {
+    const til = await loadInitialStateFromAsyncStorage()
+    if (til) {
+      this.setState({ til, isLoading: false })
+    }
   }
 
-  render() {
+  loadFeed = async () => {
+    const til = await getMyTil()
+    saveInitialStateInAsyncStorage(til)
+    this.setState({ til, isLoading: false })
+  }
+
+  render () {
     if (this.state.isLoading) return <ActivityIndicator />
-    const { til } = this.state;
+    const { til } = this.state
     return (
       <SafeAreaView style={styles.safeAreaView}>
-      <View style={styles.container}>
-        <View style={styles.heading}>
-          <Text style={styles.headingTest}>私の歴史</Text>
+        <View style={styles.container}>
+          <View style={styles.heading}>
+            <Text style={styles.headingTest}>私の歴史</Text>
+          </View>
+
+          <TilListItem til={til} />
+
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('PostTilScreen')}
+            style={styles.fab}
+          >
+            <Text style={styles.fabIcon}>+</Text>
+          </TouchableOpacity>
+          <NavigationEvents onDidFocus={() => this.loadFeed()} />
         </View>
-
-        <TilListItem til={til} />
-
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('PostTilScreen')} style={styles.fab}>
-          <Text style={styles.fabIcon}>+</Text>
-        </TouchableOpacity>
-        <NavigationEvents onDidFocus={() => this.loadFeed()} />
-
-      </View>
       </SafeAreaView>
     )
   }
@@ -63,7 +78,7 @@ export default class MyTilScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   safeAreaView: {
     flex: 1,
@@ -73,17 +88,17 @@ const styles = StyleSheet.create({
     height: 60,
     backgroundColor: '#03A9F4',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   headingTest: {
     fontSize: 20,
     color: 'white',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   list: {
     margin: 5,
     backgroundColor: 'white',
-    height:80,
+    height: 80,
     justifyContent: 'space-around',
     paddingLeft: 10,
     elevation: 1
@@ -104,4 +119,4 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: 'white'
   }
-});
+})
