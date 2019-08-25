@@ -1,4 +1,4 @@
-import { Constants } from 'expo'
+import Constants from 'expo-constants'
 import { db } from './fireStoreConfig'
 import { addFormattedPostTime } from '../logic/calcTilCardDateText'
 
@@ -11,6 +11,9 @@ export const postTil = tilText => {
       tilContentText: tilText,
       date: new Date()
     })
+    // 全体をtry catchで囲ってerrorを検出しているので以下の二文はいらない
+    // .then(response => console.log(response))
+    // .catch(() => console.log('error at postTil'))
     return true
   } catch (e) {
     return false
@@ -29,7 +32,6 @@ export const getAllUserTil = async () => {
   return TILWithPostTime
 }
 
-// ここに、ateを与える処理を追加していく。
 export const getMyTil = async () => {
   // var TILRef = db.collection('TIL');
   var TILRef = db.collection('TIL')

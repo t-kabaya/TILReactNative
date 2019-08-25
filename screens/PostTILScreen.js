@@ -14,18 +14,6 @@ import {
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
 
-const Editor = props => (
-  <TextInput
-    {...props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
-    editable
-    maxLength={40}
-    autoFocus
-    placeholder='例）30分 数学を勉強'
-    multiline
-    style={S.textInput}
-  />
-)
-
 const PostTilScreen = props => {
   const [text, useText] = useState('')
 
@@ -56,7 +44,15 @@ const PostTilScreen = props => {
         </TouchableOpacity>
       </View>
 
-      <Editor onChangeText={input => useText(input)} value={text} />
+      <TextInput
+        maxLength={40}
+        autoFocus
+        placeholder='例）30分 数学を勉強'
+        multiline
+        style={S.textInput}
+        onChangeText={input => useText(input)}
+        value={text}
+      />
     </KeyboardAvoidingView>
   )
 }
