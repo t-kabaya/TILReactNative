@@ -9,5 +9,9 @@ huskyで、publish前テストを実行させたい。
 suspenseとか使えないんだっけ？
 
 25分キャッシュ機能の作成
+25分expoSDKのアップデート
 
 多分、develop環境からは、fireStoreにpost出来なくなったんだな。
+なぜか、分からないが治った。
+
+hookを対応させたいな。

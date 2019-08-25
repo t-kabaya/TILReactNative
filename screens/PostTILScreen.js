@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import {
-  AppRegistry,
   View,
   TextInput,
   StyleSheet,
@@ -10,7 +9,6 @@ import {
   Alert
 } from 'react-native'
 import { postTil } from '../fireStore/ORM'
-import { Button } from 'react-native-elements'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
@@ -28,18 +26,13 @@ const Editor = props => (
   />
 )
 
-export default class PostTilScreen extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      text: ''
-    }
-  }
+const PostTilScreen = props => {
+  const [text, useText] = useState('')
 
   onPressSubmit = () => {
-    const isSuccess = postTil(this.state.text)
+    const isSuccess = postTil(text)
     if (isSuccess) {
-      this.props.navigation.goBack()
+      props.navigation.goBack()
     } else {
       Alert.alert('投稿に失敗しました')
     }
@@ -47,32 +40,27 @@ export default class PostTilScreen extends Component {
 
   // If you type something in the text box that is a color, the background will change to that
   // color.
-  render () {
-    return (
-      <KeyboardAvoidingView>
-        <View style={S.headerContainer}>
-          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-            <View style={S.materialButton}>
-              <Text style={S.materialButtonText}>戻る</Text>
-            </View>
-          </TouchableOpacity>
+  return (
+    <KeyboardAvoidingView>
+      <View style={S.headerContainer}>
+        <TouchableOpacity onPress={() => props.navigation.goBack()}>
+          <View style={S.materialButton}>
+            <Text style={S.materialButtonText}>戻る</Text>
+          </View>
+        </TouchableOpacity>
 
-          <TouchableOpacity onPress={this.onPressSubmit}>
-            <View style={S.materialButton}>
-              <Text onPress={this.onPressSubmit} style={S.materialButtonText}>
-                投稿
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={this.onPressSubmit}>
+          <View style={S.materialButton}>
+            <Text onPress={this.onPressSubmit} style={S.materialButtonText}>
+              投稿
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
 
-        <Editor
-          onChangeText={text => this.setState({ text })}
-          value={this.state.text}
-        />
-      </KeyboardAvoidingView>
-    )
-  }
+      <Editor onChangeText={text => this.setState({ text })} value={text} />
+    </KeyboardAvoidingView>
+  )
 }
 
 const S = StyleSheet.create({
@@ -98,3 +86,5 @@ const S = StyleSheet.create({
     fontWeight: 'bold'
   }
 })
+
+export default PostTilScreen
