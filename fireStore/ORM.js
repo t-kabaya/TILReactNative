@@ -2,15 +2,18 @@ import { Constants } from 'expo'
 import { db } from './fireStoreConfig'
 import { addFormattedPostTime } from '../logic/calcTilCardDateText'
 
-export const postTil = (til: string): void => {
-  if (til) {
+export const postTil = tilText => {
+  if (!tilText) return false
+
+  try {
     db.collection('TIL').add({
       userId: Constants.installationId,
-      tilContentText: til,
+      tilContentText: tilText,
       date: new Date()
     })
-    // 本当は、.thenの後に続けて入れないといけないが、めんどいのでこれでいいや
-    console.log('success to post TIL')
+    return true
+  } catch (e) {
+    return false
   }
 }
 
@@ -21,7 +24,6 @@ export const getAllUserTil = async () => {
   var response = await TILRef.orderBy('date', 'desc').get()
   const TIL = response.docs.map(item => item.data())
 
-  console.log('TIL2', TIL)
   const TILWithPostTime = addFormattedPostTime(TIL)
 
   return TILWithPostTime
