@@ -1,7 +1,8 @@
 import React from 'react'
 import { Platform, StatusBar, StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-navigation'
-import { AppLoading, Asset, Font, Icon } from 'expo'
+import * as Font from 'expo-font'
+
 import AppNavigator from './navigation/AppNavigator'
 import fireStoreConfig from './fireStore/fireStoreConfig'
 

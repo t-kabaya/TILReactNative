@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import {
   View,
   TextInput,
@@ -38,8 +38,6 @@ const PostTilScreen = props => {
     }
   }
 
-  // If you type something in the text box that is a color, the background will change to that
-  // color.
   return (
     <KeyboardAvoidingView>
       <View style={S.headerContainer}>
@@ -58,7 +56,7 @@ const PostTilScreen = props => {
         </TouchableOpacity>
       </View>
 
-      <Editor onChangeText={text => this.setState({ text })} value={text} />
+      <Editor onChangeText={input => useText(input)} value={text} />
     </KeyboardAvoidingView>
   )
 }
