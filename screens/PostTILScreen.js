@@ -22,7 +22,7 @@ const PostTilScreen = props => {
     if (isSuccess) {
       props.navigation.goBack()
     } else {
-      Alert.alert('投稿に失敗しました')
+      Alert.alert('保存に失敗しました')
     }
   }
 
@@ -38,7 +38,7 @@ const PostTilScreen = props => {
         <TouchableOpacity onPress={this.onPressSubmit}>
           <View style={S.materialButton}>
             <Text onPress={this.onPressSubmit} style={S.materialButtonText}>
-              投稿
+              保存
             </Text>
           </View>
         </TouchableOpacity>
