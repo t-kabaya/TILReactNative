@@ -8,3 +8,10 @@ it('renders nothng', () => {
 
   expect(tree).toMatchSnapshot()
 })
+
+it('must render one item', () => {
+  const til = [{ tilContentText: 'foo', postTimeText: 'bar' }]
+  const tree = renderer.create(<TilListItem til={til} />).toJSON()
+
+  expect(tree).toMatchSnapshot()
+})

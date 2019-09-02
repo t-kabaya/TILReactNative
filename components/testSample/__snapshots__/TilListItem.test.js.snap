@@ -1,6 +1,91 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`must render one item 1`] = `
+<RCTScrollView
+  data={
+    Array [
+      Object {
+        "postTimeText": "bar",
+        "tilContentText": "foo",
+      },
+    ]
+  }
+  disableVirtualization={false}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  numColumns={1}
+  onContentSizeChange={[Function]}
+  onEndReachedThreshold={2}
+  onLayout={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={Array []}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={21}
+>
+  <View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "elevation": 1,
+            "justifyContent": "space-around",
+            "margin": 5,
+            "marginHorizontal": 20,
+            "marginVertical": 5,
+            "minHeight": 60,
+            "paddingHorizontal": 25,
+            "paddingVertical": 7,
+          }
+        }
+      >
+        <Text
+          numberOfLines={5}
+          style={
+            Object {
+              "fontFamily": "mplus",
+              "fontSize": 20,
+              "fontWeight": "bold",
+              "letterSpacing": 3,
+              "lineHeight": 27,
+            }
+          }
+        >
+          foo
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "rgba(0, 0, 0, 0.6)",
+              "fontSize": 26.5,
+              "letterSpacing": 3,
+              "paddingTop": 13.5,
+            }
+          }
+        >
+          bar
+        </Text>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;
+
+exports[`renders nothng 1`] = `
 <RCTScrollView
   data={Array []}
   disableVirtualization={false}
