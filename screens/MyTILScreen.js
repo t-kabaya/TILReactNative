@@ -22,15 +22,9 @@ import {
 } from '../asyncStorage/myTilScreenAsyncStorage'
 
 export default class MyTilScreen extends Component {
-  static navigationOptions = {
-    header: null
-  }
-  constructor (props) {
-    super(props)
-    this.state = {
-      til: null,
-      isLoading: true
-    }
+  state = {
+    til: null,
+    isLoading: true
   }
 
   componentDidMount = async () => {

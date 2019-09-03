@@ -15,27 +15,34 @@ const HomeStack = createStackNavigator(
     HomeScreen,
     PostTilScreen
   },
-  { headerMode: 'none' }
+  {
+    headerMode: 'none',
+    navigationOptions: {
+      tabBarLabel: 'ホーム',
+      tabBarIcon: ({ focused }) => (
+        <TabBarIcon focused={focused} name={'md-home'} />
+      )
+    }
+  }
 )
 
-HomeStack.navigationOptions = {
-  header: null,
-  tabBarLabel: 'ホーム',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={'md-home'} />
-  )
-}
+// HomeStack.navigationOptions = {
+// }
 
-const MyTILStack = createStackNavigator({
-  MyTILScreen
-})
-
-MyTILStack.navigationOptions = {
-  tabBarLabel: 'マイページ',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={'md-person'} />
-  )
-}
+const MyTILStack = createStackNavigator(
+  {
+    MyTILScreen
+  },
+  {
+    headerMode: 'none',
+    navigationOptions: {
+      tabBarLabel: 'マイページ',
+      tabBarIcon: ({ focused }) => (
+        <TabBarIcon focused={focused} name={'md-person'} />
+      )
+    }
+  }
+)
 
 export default createBottomTabNavigator(
   {

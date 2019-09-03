@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`not focused home icon 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#03A9F4",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    animating={true}
+    animationDuration={1200}
+    animationEasing={[Function]}
+    color="white"
+    interaction={true}
+    renderComponent={[Function]}
+    size={50}
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "height": 50,
+          "marginHorizontal": 5,
+          "width": 10,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "height": 25,
+            "transform": Array [
+              Object {
+                "translateY": 10,
+              },
+            ],
+            "width": 10,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "height": 25,
+            "transform": Array [
+              Object {
+                "translateY": -10,
+              },
+            ],
+            "width": 10,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "height": 50,
+          "marginHorizontal": 5,
+          "width": 10,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "height": 25,
+            "transform": Array [
+              Object {
+                "translateY": 7.071067811865475,
+              },
+            ],
+            "width": 10,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "height": 25,
+            "transform": Array [
+              Object {
+                "translateY": -7.071067811865475,
+              },
+            ],
+            "width": 10,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "height": 50,
+          "marginHorizontal": 5,
+          "width": 10,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "height": 25,
+            "transform": Array [
+              Object {
+                "translateY": 6.123233995736766e-16,
+              },
+            ],
+            "width": 10,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "height": 25,
+            "transform": Array [
+              Object {
+                "translateY": -6.123233995736766e-16,
+              },
+            ],
+            "width": 10,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "height": 50,
+          "marginHorizontal": 5,
+          "width": 10,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "height": 25,
+            "transform": Array [
+              Object {
+                "translateY": 7.0710678118654755,
+              },
+            ],
+            "width": 10,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "height": 25,
+            "transform": Array [
+              Object {
+                "translateY": -7.0710678118654755,
+              },
+            ],
+            "width": 10,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "height": 50,
+          "marginHorizontal": 5,
+          "width": 10,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderTopLeftRadius": 5,
+            "borderTopRightRadius": 5,
+            "height": 25,
+            "transform": Array [
+              Object {
+                "translateY": 10,
+              },
+            ],
+            "width": 10,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "backgroundColor": "white",
+            "borderBottomLeftRadius": 5,
+            "borderBottomRightRadius": 5,
+            "height": 25,
+            "transform": Array [
+              Object {
+                "translateY": -10,
+              },
+            ],
+            "width": 10,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

@@ -23,10 +23,6 @@ import {
 } from '../asyncStorage/homeScreenAsyncStorage'
 
 export default class HomeScreen extends Component {
-  static navigationOptions = {
-    header: null
-  }
-
   state = {
     til: loadInitialStateFromAsyncStorage(),
     isLoading: true
