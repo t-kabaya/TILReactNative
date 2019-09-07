@@ -1,19 +1,14 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
-  Image,
-  Platform,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  FlatList,
   SafeAreaView
 } from 'react-native'
 import { NavigationEvents } from 'react-navigation'
 import { getMyTil } from '../fireStore/ORM'
 import TilListItem from '../components/TilListItem'
-import Layout from '../constants/Layout'
 import Colors from '../constants/Colors'
 import ActivityIndicator from '../components/ActivityIndicator'
 import {
@@ -21,53 +16,50 @@ import {
   saveInitialStateInAsyncStorage
 } from '../asyncStorage/myTilScreenAsyncStorage'
 
-export default class MyTilScreen extends Component {
-  state = {
-    til: null,
-    isLoading: true
-  }
+const MyTilScreen = props => {
+  const [til, setTil] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
-  componentDidMount = async () => {
+  useEffect(() => {
     this.loadPersistedFeed()
     this.loadFeed()
-  }
+  }, [])
 
   loadPersistedFeed = async () => {
     const til = await loadInitialStateFromAsyncStorage()
     if (til) {
-      this.setState({ til, isLoading: false })
+      setTil(til)
+      setIsLoading(false)
     }
   }
 
   loadFeed = async () => {
     const til = await getMyTil()
     saveInitialStateInAsyncStorage(til)
-    this.setState({ til, isLoading: false })
+    setTil(til)
+    setIsLoading(false)
   }
 
-  render () {
-    if (this.state.isLoading) return <ActivityIndicator />
-    const { til } = this.state
-    return (
-      <SafeAreaView style={styles.safeAreaView}>
-        <View style={styles.container}>
-          <View style={styles.heading}>
-            <Text style={styles.headingTest}>私の歴史</Text>
-          </View>
-
-          <TilListItem til={til} />
-
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('PostTilScreen')}
-            style={styles.fab}
-          >
-            <Text style={styles.fabIcon}>+</Text>
-          </TouchableOpacity>
-          <NavigationEvents onDidFocus={() => this.loadFeed()} />
+  if (isLoading) return <ActivityIndicator />
+  return (
+    <SafeAreaView style={styles.safeAreaView}>
+      <View style={styles.container}>
+        <View style={styles.heading}>
+          <Text style={styles.headingTest}>私の歴史</Text>
         </View>
-      </SafeAreaView>
-    )
-  }
+
+        <TilListItem til={til} />
+
+        <TouchableOpacity
+          onPress={() => props.navigation.navigate('PostTilScreen')}
+          style={styles.fab}
+        >
+          <Text style={styles.fabIcon}>+</Text>
+        </TouchableOpacity>
+        <NavigationEvents onDidFocus={() => this.loadFeed()} />
+      </View>
+    </SafeAreaView>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -114,3 +106,5 @@ const styles = StyleSheet.create({
     color: 'white'
   }
 })
+
+export default MyTilScreen

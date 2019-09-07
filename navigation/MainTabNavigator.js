@@ -1,13 +1,11 @@
 import React from 'react'
-import { Platform } from 'react-native'
 import {
   createStackNavigator,
   createBottomTabNavigator
 } from 'react-navigation'
-
 import TabBarIcon from '../components/TabBarIcon'
 import HomeScreen from '../screens/HomeScreen'
-import MyTILScreen from '../screens/MyTILScreen'
+import MyTiLScreen from '../screens/MyTILScreen'
 import PostTilScreen from '../screens/PostTILScreen'
 
 const HomeStack = createStackNavigator(
@@ -26,12 +24,10 @@ const HomeStack = createStackNavigator(
   }
 )
 
-// HomeStack.navigationOptions = {
-// }
-
-const MyTILStack = createStackNavigator(
+const MyTiLStack = createStackNavigator(
   {
-    MyTILScreen
+    MyTiLScreen,
+    PostTilScreen
   },
   {
     headerMode: 'none',
@@ -47,7 +43,7 @@ const MyTILStack = createStackNavigator(
 export default createBottomTabNavigator(
   {
     HomeStack,
-    MyTILStack
+    MyTiLStack
   },
   {
     headerMode: 'none'
