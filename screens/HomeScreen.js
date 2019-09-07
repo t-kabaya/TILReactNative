@@ -40,8 +40,9 @@ const HomeScreen = props => {
     setIsLoading(false)
   }
 
-  if (isLoading) return <ActivityIndicator />
-  return (
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : (
     <SafeAreaView style={S.safeAreaView}>
       <View style={S.container}>
         <StatusBar backgroundColor='red' barStyle='light-content' />

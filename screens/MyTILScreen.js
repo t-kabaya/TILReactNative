@@ -40,8 +40,9 @@ const MyTilScreen = props => {
     setIsLoading(false)
   }
 
-  if (isLoading) return <ActivityIndicator />
-  return (
+  return isLoading ? (
+    <ActivityIndicator />
+  ) : (
     <SafeAreaView style={S.safeAreaView}>
       <View style={S.container}>
         <View style={S.heading}>
