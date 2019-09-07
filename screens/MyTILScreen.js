@@ -42,19 +42,19 @@ const MyTilScreen = props => {
 
   if (isLoading) return <ActivityIndicator />
   return (
-    <SafeAreaView style={styles.safeAreaView}>
-      <View style={styles.container}>
-        <View style={styles.heading}>
-          <Text style={styles.headingTest}>私の歴史</Text>
+    <SafeAreaView style={S.safeAreaView}>
+      <View style={S.container}>
+        <View style={S.heading}>
+          <Text style={S.headingTest}>私の歴史</Text>
         </View>
 
         <TilListItem til={til} />
 
         <TouchableOpacity
           onPress={() => props.navigation.navigate('PostTilScreen')}
-          style={styles.fab}
+          style={S.fab}
         >
-          <Text style={styles.fabIcon}>+</Text>
+          <Text style={S.fabIcon}>+</Text>
         </TouchableOpacity>
         <NavigationEvents onDidFocus={() => this.loadFeed()} />
       </View>
@@ -62,7 +62,7 @@ const MyTilScreen = props => {
   )
 }
 
-const styles = StyleSheet.create({
+const S = StyleSheet.create({
   container: {
     flex: 1
   },

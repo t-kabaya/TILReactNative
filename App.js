@@ -15,14 +15,14 @@ export default class App extends React.Component {
 
   render () {
     return (
-      <SafeAreaView style={styles.container} forceInset={{ bottom: 'never' }}>
+      <SafeAreaView style={S.container} forceInset={{ bottom: 'never' }}>
         <AppNavigator />
       </SafeAreaView>
     )
   }
 }
 
-const styles = StyleSheet.create({
+const S = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#03A9F4',
