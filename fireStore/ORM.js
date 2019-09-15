@@ -18,15 +18,26 @@ export const postTil = tilText => {
   }
 }
 
-// ここに、dateを与える処理を追加していく。
+export const updateTil = (id, tilContentText) => {
+  try {
+    // console.warn({ id })
+    // console.warn({ tilContentText })
+    db.collection('TIL')
+      .doc(id)
+      .update({ tilContentText })
+    console.warn('true')
+  } catch (e) {
+    console.log('error at updateTil')
+  }
+}
+
 export const getAllUserTil = async () => {
   try {
-    // var TILRef = db.collection('TIL');
     const TIL = await db
       .collection('TIL')
       .orderBy('date', 'desc')
       .get()
-      .then(response => response.docs.map(item => item.data()))
+      .then(_parseResponse)
 
     const TILWithPostTime = addFormattedPostTime(TIL)
 
@@ -43,7 +54,7 @@ export const getMyTil = async () => {
       .collection('TIL')
       .orderBy('date', 'desc')
       .get()
-      .then(response => response.docs.map(item => item.data()))
+      .then(_parseResponse)
 
     const myTil = TIL.filter(til => til.userId === Constants.installationId)
 
@@ -57,3 +68,6 @@ export const getMyTil = async () => {
 }
 
 // フィルター関数群
+
+const _parseResponse = response =>
+  response.docs.map(item => ({ id: item.id, ...item.data() }))

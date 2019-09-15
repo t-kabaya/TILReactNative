@@ -21,6 +21,7 @@ export const addFormattedPostTime = TILs => {
     }
 
     return {
+      id: til.id,
       tilContentText: til.tilContentText,
       postTimeText
     }

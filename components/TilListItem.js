@@ -19,6 +19,7 @@ const TilListItem = props => (
         <TouchableWithoutFeedback
           onPress={() =>
             props.navigate('PostTilScreen', {
+              id: item.id,
               tilContentText: item.tilContentText
             })
           }

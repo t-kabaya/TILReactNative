@@ -8,7 +8,7 @@ import {
   KeyboardAvoidingView,
   Alert
 } from 'react-native'
-import { postTil } from '../fireStore/ORM'
+import { postTil, updateTil } from '../fireStore/ORM'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
@@ -17,13 +17,21 @@ import {
 const PostTilScreen = props => {
   const { navigation } = props
   const tilContentText = navigation.getParam('tilContentText', '')
+  const id = navigation.getParam('id', null)
 
   const [text, useText] = useState(tilContentText)
 
   onPressSubmit = () => {
+    // idがある時は、更新処理
+    if (id) {
+      updateTil(id, text)
+      navigation.goBack()
+      return
+    }
+
     const isSuccess = postTil(text)
     if (isSuccess) {
-      props.navigation.goBack()
+      navigation.goBack()
     } else {
       Alert.alert('保存に失敗しました')
     }
