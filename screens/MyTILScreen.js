@@ -49,7 +49,7 @@ const MyTilScreen = props => {
           <Text style={S.headingTest}>私の歴史</Text>
         </View>
 
-        <TilListItem til={til} />
+        <TilListItem til={til} navigate={props.navigation.navigate} />
 
         <TouchableOpacity
           onPress={() => props.navigation.navigate('PostTilScreen')}

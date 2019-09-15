@@ -50,7 +50,7 @@ const HomeScreen = props => {
           <Text style={S.headingTest}>Today I Learned</Text>
         </View>
 
-        <TilListItem til={til} />
+        <TilListItem til={til} navigate={props.navigation.navigate} />
 
         <TouchableOpacity
           onPress={() => props.navigation.navigate('PostTilScreen')}

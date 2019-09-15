@@ -15,7 +15,10 @@ import {
 } from 'react-native-responsive-screen'
 
 const PostTilScreen = props => {
-  const [text, useText] = useState('')
+  const { navigation } = props
+  const tilContentText = navigation.getParam('tilContentText', '')
+
+  const [text, useText] = useState(tilContentText)
 
   onPressSubmit = () => {
     const isSuccess = postTil(text)

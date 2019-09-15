@@ -1,39 +1,39 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
-  Image,
-  Platform,
-  ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   FlatList,
-  ActivityIndicator
+  TouchableWithoutFeedback
 } from 'react-native'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
 
-const TilListItem = props => {
-  return (
-    <FlatList
-      data={props.til}
-      renderItem={({ item }) => {
-        return (
+const TilListItem = props => (
+  <FlatList
+    data={props.til}
+    renderItem={({ item }) => {
+      return (
+        <TouchableWithoutFeedback
+          onPress={() =>
+            props.navigate('PostTilScreen', {
+              tilContentText: item.tilContentText
+            })
+          }
+        >
           <View style={S.list}>
             <Text style={S.contentText} numberOfLines={5}>
               {item.tilContentText}
             </Text>
             <Text style={S.postTimeText}>{item.postTimeText}</Text>
           </View>
-        )
-      }}
-    />
-  )
-}
-
-export default TilListItem
+        </TouchableWithoutFeedback>
+      )
+    }}
+  />
+)
 
 const S = StyleSheet.create({
   list: {
@@ -62,3 +62,5 @@ const S = StyleSheet.create({
     paddingTop: hp('1%')
   }
 })
+
+export default TilListItem
